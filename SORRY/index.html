@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eef4e9">
+<title>A little sorry, bestie 💚</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+:root{--green:#66886a;--deep:#31563a;--sage:#e5eee0;--cream:#fbfaf5;--gold:#b59a60;--ink:#435a47}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'DM Sans',Arial,sans-serif;overflow-x:hidden}
+button{font:inherit;cursor:pointer}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:100}
+.nav{position:absolute;top:0;left:0;right:0;padding:22px 5vw;display:flex;justify-content:space-between;align-items:center;z-index:4;color:#59765d;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.nav b{font:italic 18px 'Playfair Display',serif;letter-spacing:0;text-transform:none;color:var(--deep)}
+.hero{min-height:100svh;min-height:100dvh;display:grid;place-items:center;text-align:center;padding:clamp(64px,9vh,90px) 20px clamp(28px,5vh,50px);position:relative;overflow:hidden;background:radial-gradient(ellipse at center,#fffefb 0%,#edf4e9 65%,#dce9d7 100%)}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid #7e9d7c35;border-radius:50%;width:min(78vw,820px);aspect-ratio:1;animation:orbit 48s linear infinite}
+.hero:after{width:min(94vw,1000px);animation-direction:reverse;opacity:.65}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.hero-inner{position:relative;z-index:1;max-width:850px}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green)}
+.hero h1{font:clamp(58px,10vw,112px)/.9 'Playfair Display',serif;letter-spacing:-3px;font-weight:500;color:var(--deep);margin:24px 0}
+.hero h1 em{color:#7d9c7d}
+.hero p{max-width:440px;margin:auto;color:#687d6b;font-size:14px;line-height:1.8}
+.dates{display:flex;justify-content:center;align-items:center;gap:34px;margin:32px 0}
+.dates div{display:grid;gap:5px}
+.dates strong{font:clamp(45px,8vw,70px)/.9 'Playfair Display',serif;color:var(--deep);font-weight:500}
+.dates small{font-size:9px;letter-spacing:2px;color:#7e967d}
+.dates span{color:var(--gold);font-size:23px}
+.btn{border:1px solid var(--green);border-radius:30px;background:var(--green);color:white;padding:14px 22px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:.3s}
+.btn:hover{background:var(--deep);transform:translateY(-3px);box-shadow:0 10px 25px #31563a2b}
+.scrollhint{margin-top:35px;color:#7b927b;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+.scrollhint span{display:block;width:1px;height:32px;background:var(--gold);margin:10px auto 0;animation:down 1.5s infinite}
+@keyframes down{50%{transform:scaleY(.45);opacity:.4}}
+.apology{min-height:100svh;min-height:100dvh;display:grid;place-items:center;background:var(--deep);color:#fffdf5;padding:clamp(28px,5vh,48px) 22px;text-align:center;position:relative;overflow:hidden}
+.apology:before{content:"";position:absolute;width:540px;height:540px;border:1px solid #ffffff16;border-radius:50%;top:50%;left:-250px;transform:translateY(-50%)}
+.letter{position:relative;width:min(100%,780px);max-width:780px;margin:auto;border:1px solid #d9c78d65;padding:clamp(22px,3.8vw,44px) clamp(22px,5vw,58px)}
+.apology .eyebrow{color:#d9c78d}
+.letter h2{font:clamp(34px,5.2vw,58px)/1.02 'Playfair Display',serif;font-weight:500;margin:12px 0 18px;color:#fffdf5}
+.letter h2 em{color:#d7e5ce}
+.letter-copy{max-width:590px;margin:auto;font-size:clamp(14px,1.25vw,16px);line-height:1.65;color:#e6eee2}
+.letter-copy p{margin:0 0 9px}
+.signature{font:italic 18px 'Playfair Display',serif;color:#d8c58f;margin-top:15px}
+.memories{min-height:100svh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,5vh,52px) 20px;background:#eef4e9}
+.memories-head{text-align:center;max-width:650px;margin:0 auto clamp(18px,3vh,30px)}
+.memories-head h2{font:clamp(34px,5.5vw,56px)/1 'Playfair Display',serif;font-weight:500;color:var(--deep);margin:14px 0}
+.memories-head p{font-size:13px;line-height:1.7;color:#728574}
+ .carousel{width:min(94vw,1040px);margin:0 auto;position:relative}
+.carousel-stage{position:relative;height:min(57svh,520px);min-height:260px;overflow:hidden;border-radius:22px;background:linear-gradient(145deg,#dce9d7,#f8f8ef);box-shadow:0 22px 60px #294b3420;isolation:isolate}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px 16px 0;opacity:0;visibility:hidden;z-index:0}
+.slide.active{opacity:1;visibility:visible;z-index:2}
+.slide.entering{animation:cinemaReveal 1.05s cubic-bezier(.77,0,.18,1) both;z-index:3}
+.slide.exiting{visibility:visible;z-index:2;animation:cinemaExit .82s cubic-bezier(.77,0,.18,1) both}
+@keyframes cinemaReveal{
+ 0%{clip-path:inset(0 0 0 100%);transform:scale(1.075);filter:brightness(1.18) blur(3px)}
+ 55%{clip-path:inset(0 0 0 0);transform:scale(1.025);filter:brightness(1.04) blur(0)}
+ 100%{clip-path:inset(0 0 0 0);transform:scale(1);filter:brightness(1) blur(0)}
+}
+@keyframes cinemaExit{
+ 0%{clip-path:inset(0 0 0 0);transform:scale(1);opacity:1}
+ 100%{clip-path:inset(0 100% 0 0);transform:scale(.975);opacity:.35}
+}
+.slide-photo{width:100%;height:calc(100% - 72px);display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:13px}
+.slide-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;transform:scale(1);filter:drop-shadow(0 8px 22px #253e2c20)}
+.slide.entering .slide-photo img{animation:photoSettle 1.45s .12s cubic-bezier(.16,1,.3,1) both}
+@keyframes photoSettle{from{transform:scale(1.07);filter:brightness(1.1) drop-shadow(0 8px 22px #253e2c20)}to{transform:scale(1);filter:brightness(1) drop-shadow(0 8px 22px #253e2c20)}}
+.slide-caption{height:66px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 12px;color:#36563b}
+.slide-caption span{font:clamp(17px,2.6vw,23px) 'Playfair Display',serif}
+.slide-caption small{font-size:9px;letter-spacing:2px;color:#82957d}
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:22px;margin:12px auto 0}
+.arrow{width:43px;height:43px;border:1px solid #789779;border-radius:50%;background:#fffef9;color:#426747;font-size:27px;line-height:1;display:grid;place-items:center;transition:background .25s,color .25s,transform .25s}
+.arrow:hover{background:#66886a;color:white;transform:scale(1.08)}
+.dots{display:flex;align-items:center;gap:9px}
+.dot{width:7px;height:7px;border:0;border-radius:50%;background:#b7c8b2;padding:0;transition:width .35s,background .35s,border-radius .35s}
+.dot.active{width:27px;border-radius:8px;background:#66886a}
+.slide-help{text-align:center;margin-top:8px;font-size:9px;letter-spacing:2px;color:#849783}
+.end{min-height:100svh;min-height:100dvh;display:grid;place-items:center;text-align:center;padding:clamp(40px,7vh,70px) 20px;background:radial-gradient(ellipse at center,#e2eddd,#cfdfca)}
+.end h2{font:clamp(46px,8vw,82px)/.98 'Playfair Display',serif;color:var(--deep);font-weight:500;margin:18px 0}
+.end h2 em{color:#769574}
+.end p{max-width:440px;margin:auto;font-size:14px;line-height:1.8;color:#536b56}
+.end .btn{margin:26px 5px 0}
+.reply{min-height:30px;margin-top:18px;color:#456b4b;font:italic 19px 'Playfair Display',serif}
+.footer{text-align:center;background:#cfdfca;padding:22px;color:#6f866f;font-size:9px;letter-spacing:2px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s,transform .85s}
+.reveal.in{opacity:1;transform:none}
+#lightbox{position:fixed;inset:0;z-index:120;background:#14291dee;display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+#lightbox.active{opacity:1;visibility:visible}
+#lightbox img{max-width:min(92vw,1000px);max-height:85vh;object-fit:contain;border-radius:8px;transform:scale(.92);transition:transform .45s}
+#lightbox.active img{transform:scale(1)}
+#lightbox button{position:absolute;top:18px;right:20px;border:1px solid #ffffff88;background:transparent;color:white;width:42px;height:42px;border-radius:50%;font-size:24px}
+.spark{position:fixed;top:-30px;z-index:130;pointer-events:none;animation:fall 3s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(450deg);opacity:0}}
+@media(max-width:680px){
+ .nav{padding:18px}.hero h1{letter-spacing:-2px}
+ .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+ .memory,.memory:nth-child(4),.memory:nth-child(5){grid-column:span 1}
+ .memory,.memory:nth-child(2),.memory:nth-child(3),.memory:nth-child(4),.memory:nth-child(5){transform:translateY(55px) scale(.95) rotateX(7deg)}
+ .memory.show,.memory:nth-child(2).show,.memory:nth-child(3).show,.memory:nth-child(4).show,.memory:nth-child(5).show{transform:translateY(0) scale(1) rotateX(0)}
+ .memory .image-wrap,.memory:nth-child(4) .image-wrap,.memory:nth-child(5) .image-wrap{aspect-ratio:3/4}
+ .memory .caption{padding:11px 10px;display:block}
+ .memory .caption span:first-child{display:block;font-size:14px}
+ .memory .caption span:last-child{display:block;margin-top:4px}
+ .apology{padding:26px 14px}.letter{padding:25px 19px}.letter h2{font-size:clamp(34px,9vw,46px)}.letter-copy{font-size:14px;line-height:1.6}.signature{font-size:17px;margin-top:12px}
+}
+@media(max-width:390px){.carousel-stage{height:48svh;min-height:230px}.carousel-controls{gap:14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<header class="nav"><b>for my bestie ♡</b><span>a little birthday apology</span></header>
+<section class="hero">
+ <div class="hero-inner reveal">
+  <div class="eyebrow">A very important announcement</div>
+  <h1>Oops.<br><em>One day</em><br>late.</h1>
+  <p>I got the date wrong… and I owe my favourite person a proper apology.</p>
+  <div class="dates"><div><strong>30</strong><small>YOUR DAY</small></div><span>→</span><div><strong>31</strong><small>MY WISH 🥲</small></div></div>
+  <button class="btn" onclick="document.getElementById('apology').scrollIntoView({behavior:'smooth'})">Okay, hear me out</button>
+  <div class="scrollhint">there's a note for you<span></span></div>
+ </div>
+</section>
+<section class="apology" id="apology">
+ <div class="letter reveal">
+  <div class="eyebrow">No excuses, just me</div>
+  <h2>Dear bestie,<br><em>I'm really sorry.</em></h2>
+  <div class="letter-copy">
+   <p>Your birthday was on the 30th, and I wished you on the 31st. I got the date wrong. 😭</p>
+   <p>I'm genuinely sorry. You deserved an on-time wish, and I wish I hadn't missed it.</p>
+   <p>You're one of my favourite people, and I'm so glad I have you in my life.</p>
+   <p><b>Happy birthday! I hope this year brings you so many lovely things. Love you! 💚</b></p>
+  </div>
+  <div class="signature">— Your forgetful bestie ♡</div>
+ </div>
+</section>
+<section class="memories" id="memories">
+ <div class="memories-head reveal">
+  <div class="eyebrow">The best part of us</div>
+  <h2>Little moments. Big memories.</h2>
+  <p>Five photos, a thousand laughs, and many more memories waiting for us.</p>
+ </div>
+ <div class="carousel" aria-label="Photo memories">
+  <div class="carousel-stage">
+   <article class="slide active" aria-hidden="false">
+      <div class="slide-photo"><img src="image1.jpeg" alt="One of my favourites"></div>
+      <div class="slide-caption"><span>One of my favourites</span><small>01 / 05</small></div>
+    </article>
+   <article class="slide" aria-hidden="true">
+      <div class="slide-photo"><img src="image2.jpeg" alt="The happy days"></div>
+      <div class="slide-caption"><span>The happy days</span><small>02 / 05</small></div>
+    </article>
+   <article class="slide" aria-hidden="true">
+      <div class="slide-photo"><img src="image3.jpeg" alt="Our silly moments"></div>
+      <div class="slide-caption"><span>Our silly moments</span><small>03 / 05</small></div>
+    </article>
+   <article class="slide" aria-hidden="true">
+      <div class="slide-photo"><img src="image4.jpeg" alt="Always a good time"></div>
+      <div class="slide-caption"><span>Always a good time</span><small>04 / 05</small></div>
+    </article>
+   <article class="slide" aria-hidden="true">
+      <div class="slide-photo"><img src="image5.jpeg" alt="More memories to come"></div>
+      <div class="slide-caption"><span>More memories to come</span><small>05 / 05</small></div>
+    </article>
+  </div>
+  <div class="carousel-controls">
+   <button class="arrow prev" type="button" aria-label="Previous photo" onclick="changeSlide(-1)">‹</button>
+   <div class="dots" id="dots">
+    <button class="dot active" aria-label="Go to photo 1" onclick="showSlide(0)"></button>
+    <button class="dot" aria-label="Go to photo 2" onclick="showSlide(1)"></button>
+    <button class="dot" aria-label="Go to photo 3" onclick="showSlide(2)"></button>
+    <button class="dot" aria-label="Go to photo 4" onclick="showSlide(3)"></button>
+    <button class="dot" aria-label="Go to photo 5" onclick="showSlide(4)"></button>
+   </div>
+   <button class="arrow next" type="button" aria-label="Next photo" onclick="changeSlide(1)">›</button>
+  </div>
+  <div class="slide-help">USE THE ARROWS OR SWIPE TO SEE OUR MEMORIES</div>
+ </div>
+</section>
+<section class="end">
+ <div class="reveal">
+  <div class="eyebrow">One last thing</div>
+  <h2>One late wish.<br><em>One big treat.</em></h2>
+  <p>I can't rewind the date, but I can make it up to you. Birthday treat is on me. You pick the place. Deal? 😌</p>
+  <button class="btn" onclick="reply(1)">Deal, bestie 💚</button>
+  <button class="btn" style="background:transparent;color:#456b4b" onclick="reply(2)">I'm choosing something expensive 😂</button>
+  <div class="reply" id="reply"></div>
+ </div>
+</section>
+<footer class="footer">THE END · BUT NEVER THE MEMORIES ♡</footer>
+<div id="lightbox" onclick="closeLightbox(event)"><button onclick="closeLightbox(event)" aria-label="Close">×</button><img id="large" alt="Memory enlarged"></div>
+<script>
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{
+ if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}
+}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+let currentSlide=0, slideBusy=false;
+const allSlides=[...document.querySelectorAll('.slide')];
+const allDots=[...document.querySelectorAll('.dot')];
+function showSlide(index){
+ if(slideBusy || index===currentSlide || index<0 || index>=allSlides.length)return;
+ slideBusy=true;
+ const old=allSlides[currentSlide], next=allSlides[index];
+ old.classList.remove('entering','exiting');
+ next.classList.remove('entering','exiting');
+ next.classList.add('active','entering');
+ next.setAttribute('aria-hidden','false');
+ old.classList.add('exiting');
+ old.setAttribute('aria-hidden','true');
+ allDots[currentSlide].classList.remove('active');
+ allDots[index].classList.add('active');
+ currentSlide=index;
+ window.setTimeout(()=>{
+  old.classList.remove('active','exiting');
+  next.classList.remove('entering');
+  slideBusy=false;
+ },1100);
+}
+function changeSlide(direction){showSlide((currentSlide+direction+allSlides.length)%allSlides.length)}
+document.querySelectorAll('.slide-photo img').forEach(img=>img.addEventListener('click',()=>{
+ document.getElementById('large').src=img.src;
+ document.getElementById('lightbox').classList.add('active');
+ document.body.style.overflow='hidden';
+}));
+window.addEventListener('scroll',()=>{
+ const max=document.documentElement.scrollHeight-innerHeight;
+ document.getElementById('progress').style.width=(max?scrollY/max*100:0)+'%';
+},{passive:true});
+document.querySelectorAll('.memory img').forEach(img=>img.addEventListener('click',()=>{
+ document.getElementById('large').src=img.src;document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden';
+}));
+function closeLightbox(e){if(e.target.id==='lightbox'||e.target.tagName==='BUTTON'){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}}
+document.addEventListener('keydown',e=>{
+ if(e.key==='ArrowRight')changeSlide(1);
+ if(e.key==='ArrowLeft')changeSlide(-1);
+});
+let touchStartX=0;
+const stage=document.querySelector('.carousel-stage');
+stage.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});
+stage.addEventListener('touchend',e=>{
+ const delta=e.changedTouches[0].screenX-touchStartX;
+ if(Math.abs(delta)>45)changeSlide(delta<0?1:-1);
+},{passive:true});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}});
+function reply(n){
+ document.getElementById('reply').textContent=n===1?'Yay! Treat date pending. Love you, bestie! 💚':'Expensive aa? Birthday privilege accepted. 😂';
+ const bits=['💚','✿','✧','🍃','♡'];
+ for(let i=0;i<35;i++){const s=document.createElement('span');s.className='spark';s.textContent=bits[Math.floor(Math.random()*bits.length)];s.style.left=Math.random()*100+'vw';s.style.fontSize=(13+Math.random()*15)+'px';s.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),3500)}
+}
+</script>
+</body>
+</html>
